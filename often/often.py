@@ -16,7 +16,7 @@ from main.Blockchain import *
 
 # 4.签名一个消息：有以太坊消息前缀
 # 0x4118839afc359a4773981bbc4edbba36ad8aafe8f24282b5cde2f6490a4e33b63d478cd894428220180dd8998b138fec7634af90ec8ff0451257e646ef3aea231b
-# chain=Chain(config.goerliAPI)
+chain=Chain(config.MainnetAPI)
 # account=Account(chain,config.privateKey)
 # account.SignMessage("a")
 
@@ -70,8 +70,8 @@ from main.Blockchain import *
 
 # 18.获取slot
 # chain=Chain(config.goerliAPI)
-# chain.IterateStorage()
-# chain.GetStorage()
+chain.IterateStorage("0x6982508145454Ce325dDbE47a25d4ec3d2311933",20)
+# chain.GetStorage("0x509Ee0d083DdF8AC028f2a56731412edD63223B9",7)
 
 # 19.获取函数选择器
 # BlockchainUtils.GetFunctionSelector("setX",["uint256","uint256"])

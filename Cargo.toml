@@ -19,3 +19,5 @@ alloy = { version = "0.5.2", features = [
     "signer-yubihsm",
     "eips",
 ] }
+dotenv = "0.15.0"
+tokio = "1.41.1"

@@ -27,16 +27,14 @@ type ProviderType = FillProvider<
 >;
 
 pub struct Config {
-    pub mode: String,
     pub wallet: EthereumWallet,
-    pub address: Address,
+    pub caller: Address,
     pub etherscan_key: String,
     pub provider: ProviderType,
 }
 
 impl Config {
-    pub fn new(
-        mode: String,
+    pub fn init(
         private_key: String,
         rpc_url: String,
         etherscan_key: String,
@@ -52,15 +50,14 @@ impl Config {
             .on_http(rpc_url.clone().parse()?);
 
         Ok(Config {
-            mode,
             wallet,
-            address,
+            caller: address,
             etherscan_key,
             provider,
         })
     }
 
     pub fn peek(self) -> Address {
-        self.address
+        self.caller
     }
 }

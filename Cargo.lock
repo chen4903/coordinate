@@ -1468,7 +1468,9 @@ name = "coordinate"
 version = "0.1.0"
 dependencies = [
  "alloy",
+ "alloy-primitives",
  "dotenv",
+ "serde",
  "tokio",
 ]
 

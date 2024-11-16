@@ -19,5 +19,7 @@ alloy = { version = "0.5.2", features = [
     "signer-yubihsm",
     "eips",
 ] }
+alloy-primitives = "0.8.12"
 dotenv = "0.15.0"
+serde = "1.0.215"
 tokio = "1.41.1"

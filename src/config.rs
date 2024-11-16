@@ -6,7 +6,7 @@ use alloy::{
             BlobGasFiller, ChainIdFiller, FillProvider, GasFiller, JoinFill, NonceFiller,
             WalletFiller,
         },
-        Identity, ProviderBuilder, RootProvider,
+        Identity, Provider, ProviderBuilder, RootProvider,
     },
     signers::local::PrivateKeySigner,
     transports::http::{Client, Http},
@@ -27,14 +27,15 @@ type ProviderType = FillProvider<
 >;
 
 pub struct Config {
-    pub wallet: EthereumWallet,
+    pub private_key: String,
     pub caller: Address,
     pub etherscan_key: String,
     pub provider: ProviderType,
+    pub chain_id: u64,
 }
 
 impl Config {
-    pub fn init(
+    pub async fn init(
         private_key: String,
         rpc_url: String,
         etherscan_key: String,
@@ -49,11 +50,14 @@ impl Config {
             .wallet(wallet.clone())
             .on_http(rpc_url.clone().parse()?);
 
+        let chain_id = provider.get_chain_id().await?;
+
         Ok(Config {
-            wallet,
+            private_key,
             caller: address,
             etherscan_key,
             provider,
+            chain_id,
         })
     }
 
